@@ -30,11 +30,10 @@ float _r;
 
 int alpha;
 int area;
-int bounce;
+
 // ================================================================
 
 void settings(){ 
-
 	size(stageW,stageH,P3D);
 }
 
@@ -46,17 +45,16 @@ void setup() {
 	H.init(this).background(bgC).use3D(true);
 	smooth();
 
-	int rects = 10;
+	int rects = 4;
 
 	for (int i = 1; i < rects; ++i) {
 		for (int j = 1; j < rects; ++j) {
-			for (int k = 0; k < rects; ++k) {
+			for (int k = 1; k < rects; ++k) {
 				
-				d = new HBox();
+				d = new HSphere();
 
-				_r = 25.0;
+				_r = 50.0;
 				area = 200;
-				bounce = 20;
 
 				x = map(i * _r, 0, rects * _r, -area, area);
 				y = map(j * _r, 0, rects * _r, -area, area);
@@ -69,17 +67,9 @@ void setup() {
 					.size(_r)
 					.loc(x,y,z)
 					.anchorAt(H.CENTER)
-					.fill(fgC)
-					.noStroke()
-					.rotateX(45)
-					.rotateZ(45);
-
-				r = new HRotate();
-				r
-					.target(d)
-					.speedZ( 1 )
-					.speedX( 2 )
-					.speedY( 1.5 );
+					// .fill(fgC)
+					.stroke(fgC)
+					.noFill();
 
 				H.add(d);
 				

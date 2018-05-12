@@ -53,6 +53,7 @@ float _r;
 
 int alpha;
 int area;
+boolean shapeSelector;
 
 // ================================================================
 
@@ -74,9 +75,10 @@ public void setup() {
 		for (int j = 1; j < rects; ++j) {
 			for (int k = 1; k < rects; ++k) {
 				
-				d = new HSphere();
+				shapeSelector = ((k + j) % 2 == 1);
+				d = shapeSelector ? new HSphere() : new HBox();
 
-				_r = 50.0f;
+				_r = shapeSelector ? 25.0f : 50.0f;
 				area = 200;
 
 				x = map(i * _r, 0, rects * _r, -area, area);
@@ -89,7 +91,6 @@ public void setup() {
 				d
 					.size(_r)
 					.loc(x,y,z)
-					.anchorAt(H.CENTER)
 					// .fill(fgC)
 					.stroke(fgC)
 					.noFill();
