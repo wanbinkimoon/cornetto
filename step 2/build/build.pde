@@ -41,7 +41,7 @@ void settings(){
 // ================================================================
 
 void setup() {
-	colors = new HColorPool(#ed6b5a, #f4f1bc, #9bc1bb, #5aa3a8, #e5eade);
+	colors = new HColorPool(#E9F042, #08EF98, #3DCEF2, #FDB4F9, #F1F1F1, #ED329F);
 	
 	H.init(this).background(bgC).use3D(true);
 	smooth();
@@ -71,14 +71,6 @@ void setup() {
 					// .fill(fgC)
 					.stroke(fgC)
 					.noFill();
-
-				new HOscillator()
-					.target(d)
-					.property(H.SIZE)
-					// .relativeVal(0)
-					.range(25, 50)
-					.speed(random(0, 1))
-					.freq(10);
 
 				H.add(d);
 				
