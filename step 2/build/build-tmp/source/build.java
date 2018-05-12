@@ -64,7 +64,7 @@ public void settings(){
 // ================================================================
 
 public void setup() {
-	colors = new HColorPool(0xffE9F042, 0xff08EF98, 0xff3DCEF2, 0xffFDB4F9, 0xffF1F1F1, 0xffED329F);
+	colors = new HColorPool(0xffed6b5a, 0xfff4f1bc, 0xff9bc1bb, 0xff5aa3a8, 0xffe5eade);
 	
 	H.init(this).background(bgC).use3D(true);
 	
@@ -94,6 +94,14 @@ public void setup() {
 					// .fill(fgC)
 					.stroke(fgC)
 					.noFill();
+
+				new HOscillator()
+					.target(d)
+					.property(H.SIZE)
+					// .relativeVal(0)
+					.range(25, 50)
+					.speed(random(0, 5))
+					.freq(10);
 
 				H.add(d);
 				
