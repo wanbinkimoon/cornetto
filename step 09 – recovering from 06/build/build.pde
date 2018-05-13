@@ -8,6 +8,7 @@ String dataPATH = "../../data";
 boolean letsRender = false;
 int     renderNum  = 0;
 String  renderPATH = "../render/";
+double 	angle			 = 0.0025;
 
 // ================================================================
 
@@ -53,7 +54,16 @@ void setup() {
 	
 	H.init(this).background(bgC).use3D(true);
 	smooth();
+	renderObjs();
 
+	cam = new PeasyCam(this, 1200);
+	cam.rotateX(35);
+	cam.rotateY(45);
+}
+
+// ================================================================
+
+void renderObjs(){
 	int rects = 4;
 
 	for (int i = 1; i < rects; ++i) {
@@ -104,8 +114,6 @@ void setup() {
 			}
 		}
 	}
-
-cam = new PeasyCam(this, 600);
 }
 
 // ================================================================
@@ -114,11 +122,16 @@ void draw() {
 
 	H.drawStage();
 
+	cam.rotateX(angle);
+	cam.rotateY(angle);
+
+
 	if (letsRender) {
 		letsRender = false;
 		save(renderPATH + renderNum + ".png");
 		renderNum++;
 	}
+
 }
 
 
